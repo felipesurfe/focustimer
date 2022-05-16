@@ -9,6 +9,8 @@ const buttonPlay = document.querySelector('.play')
 const buttonPause = document.querySelector('.pause')
 const buttonStop = document.querySelector('.stop')
 const buttonSet = document.querySelector('.set')
+const buttonSoundOn = document.querySelector('.sound-on')
+const buttonSoundOff = document.querySelector('.sound-off')
 
 //Event-driven
 //Programação imperativa
@@ -31,4 +33,14 @@ buttonStop.addEventListener('click', function() {
   buttonPause.classList.add('hide')
   buttonSet.classList.remove('hide')
   buttonStop.classList.add('hide')
-}) 
+})
+
+buttonSoundOn.addEventListener('click', function() {
+  buttonSoundOn.classList.add('hide')
+  buttonSoundOff.classList.remove('hide')  
+})
+
+buttonSoundOff.addEventListener('click', function() {
+  buttonSoundOff.classList.add('hide')
+  buttonSoundOn.classList.remove('hide')
+})
