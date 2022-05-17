@@ -9,7 +9,6 @@ const secondsDisplay = document.querySelector('.seconds')
 let minutes = Number(minutesDisplay.textContent)
 let timerTimeOut
 
-
 function resetControls() {
   buttonPlay.classList.remove('hide')
   buttonPause.classList.add('hide')
@@ -34,20 +33,19 @@ function countdown(){
 
     updateTimerDisplay(minutes, 0)
 
-    if (minutes <= 0) {  
+    if (minutes <= 0) {
       resetControls()
       return
     }
 
     if( seconds <= 0 ) {
-      seconds = 60
-
+      seconds = 3
       --minutes
     }
 
-    updateTimerDisplay(minutes, String(seconds -1))
-    
-     countdown()
+    updateTimerDisplay(minutes, String(seconds - 1))
+
+    countdown()
   }, 1000)
 }
 
@@ -83,6 +81,12 @@ buttonSoundOn.addEventListener('click', function() {
 })
 
 buttonSet.addEventListener('click', function() {
-  minutes = prompt('Quantos minutos?') || 0
+  let newMinutes = prompt('Quantos minutos?')
+  if (!newMinutes) {
+    resetTimer()
+    return
+  }
+
+  minutes = newMinutes
   updateTimerDisplay(minutes, 0)
 })
