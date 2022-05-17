@@ -4,10 +4,10 @@ const buttonStop = document.querySelector('.stop')
 const buttonSet = document.querySelector('.set')
 const buttonSoundOn = document.querySelector('.sound-on')
 const buttonSoundOff = document.querySelector('.sound-off')
-let minutes
-let timerTimeOut
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
+let minutes = Number(minutesDisplay.textContent)
+let timerTimeOut
 
 
 function resetControls() {
@@ -20,6 +20,11 @@ function resetControls() {
 function updateTimerDisplay(minutes, seconds) {
   minutesDisplay.textContent = String(minutes).padStart(2, "0")
   secondsDisplay.textContent = String(seconds).padStart(2, "0")
+}
+
+function resetTimer() {
+  updateTimerDisplay(minutes, 0)
+  clearTimeout(timerTimeOut)
 }
 
 function countdown(){
@@ -59,11 +64,12 @@ buttonPlay.addEventListener('click', function() {
 buttonPause.addEventListener('click', function() {
   buttonPause.classList.add('hide')
   buttonPlay.classList.remove('hide')
+  clearTimeout(timerTimeOut)
 })
 
 buttonStop.addEventListener('click', function() {
   resetControls()
-  clearTimeout(timerTimeOut)
+  resetTimer()
 })
 
 buttonSoundOff.addEventListener('click', function() {
